@@ -24,8 +24,7 @@ int main() {
 	printf("%d\n", Min<int>(114, 514));
 	printf("%f\n", Min<float>(11.4f, 51.4f));
 	printf("%lf\n", Min<double>(11.4f, 51.4f));
-	printf("%c\n", Min<char>('v', 'x'));
-
+	Min<char>('v', 'x');
 	return 0;
 }
 
