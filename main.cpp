@@ -1,31 +1,34 @@
 #include <stdio.h>
 
-template <typename Type>
+int Normal(int Money, int hour) {
 
-Type Min(Type a, Type b) {
-	if (a < b) {
-		return b;
-	}
-	return a;
+    if (hour <= 1) {
+        return Money;
+    }
+
+    return Money + Normal(1072, hour - 1);
 }
 
-template <>
-char Min <char>(char a, char b)
-{
-	printf("数字以外は代入できません");
-	return 0;
+int Recursive(int Money, int hour) {
+
+    if (hour <= 1) {
+        return Money;
+    }
+
+    return Money + Recursive(Money * 2 - 50, hour - 1);
 }
 
 
 int main() {
+    int R = Recursive(100, 8);
+    int N = Normal(1072, 8);
 
-	const int kWindowWigth = 1280;
+    printf("再帰的な賃金 = %d\n", R);
+    printf("一般的な賃金 = %d\n", N);
+    return(0);
 
-	printf("%d\n", Min<int>(114, 514));
-	printf("%f\n", Min<float>(11.4f, 51.4f));
-	printf("%lf\n", Min<double>(11.4f, 51.4f));
-	Min<char>('v', 'x');
-	return 0;
 }
+
+
 
 
