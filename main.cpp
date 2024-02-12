@@ -1,32 +1,26 @@
 #include <stdio.h>
-
-template <typename Type>
-
-Type Min(Type a, Type b) {
-	if (a < b) {
-		return b;
-	}
-	return a;
-}
-
-template <>
-char Min <char>(char a, char b)
-{
-	printf("”šˆÈŠO‚Í‘ã“ü‚Å‚«‚Ü‚¹‚ñ");
-	return 0;
-}
-
+#include <iostream>
+#include "Comparer.h"
 
 int main() {
 
-	const int kWindowWigth = 1280;
+	Comparer<int, int> comparer1(1, 2);
+	std::cout << comparer1.Min() << std::endl;
 
-	printf("%d\n", Min<int>(114, 514));
-	printf("%f\n", Min<float>(11.4f, 51.4f));
-	printf("%lf\n", Min<double>(11.4f, 51.4f));
-	printf("%c\n", Min<char>('v', 'x'));
+	Comparer<int, float> comparer2(3, 4.0f);
+	std::cout << comparer2.Min() << std::endl;
+
+	Comparer<int, double> comparer3(5, 6.0f);
+	std::cout << comparer3.Min() << std::endl;
+
+	Comparer<float, float> comparer4(7.0f, 8.0f);
+	std::cout << comparer4.Min() << std::endl;
+
+	Comparer<float, double> comparer5(9.0f, 10.0f);
+	std::cout << comparer5.Min() << std::endl;
+
+	Comparer<double, double> comparer6(11.0f, 12.0f);
+	std::cout << comparer6.Min() << std::endl;
 
 	return 0;
 }
-
-
