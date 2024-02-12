@@ -1,32 +1,23 @@
-#include <stdio.h>
-
-template <typename Type>
-
-Type Min(Type a, Type b) {
-	if (a < b) {
-		return b;
-	}
-	return a;
-}
-
-template <>
-char Min <char>(char a, char b)
-{
-	printf("数字以外は代入できません");
-	return 0;
-}
-
+#include <iostream>
+#include <chrono>
 
 int main() {
+	
+	std::string a(100000, 'a');
+	
+	auto CopyStart = std::chrono::high_resolution_clock::now();
+	std::string CopyStr = a;
+	auto CopyEnd = std::chrono::high_resolution_clock::now();
+	auto CopyDuration = std::chrono::duration_cast<std::chrono::microseconds>(CopyEnd - CopyStart);
 
-	const int kWindowWigth = 1280;
+	auto MoveStart = std::chrono::high_resolution_clock::now();
+	std::string moveStr = std::move(a);
+	auto MoveEnd = std::chrono::high_resolution_clock::now();
+	auto MoveDuration = std::chrono::duration_cast<std::chrono::microseconds>(MoveEnd - MoveStart);
 
-	printf("%d\n", Min<int>(114, 514));
-	printf("%f\n", Min<float>(11.4f, 51.4f));
-	printf("%lf\n", Min<double>(11.4f, 51.4f));
-	printf("%c\n", Min<char>('v', 'x'));
+	std::cout << "100,000文字を移動とコピーで比較しました。" << std::endl;
+	std::cout << "コピー : " << CopyDuration.count() << "μs" << std::endl;
+	std::cout << "移動 : " << MoveDuration.count() << "μs" << std::endl;
 
 	return 0;
 }
-
-
