@@ -5,7 +5,7 @@ class Enemy {
 public:
 	//敵の状態
 	enum class Phase {
-		kRangeAttack,
+		kCloseRangeAttack,
 		kShootingAttack,
 		kLeave,
 	};
@@ -18,7 +18,7 @@ public:
 	/// <summary>
 	/// 近接攻撃
 	/// </summary>
-	void RangeAttack();
+	void CloseRangeAttack();
 
 	/// <summary>
 	/// 射撃攻撃
@@ -34,6 +34,6 @@ private:
 	//メンバ関数ポインタのテーブル
 	static void (Enemy::* spFuncTable[])();
 	//敵の状態
-	Phase phase_ = Phase::kRangeAttack;
+	Phase phase_ = Phase::kCloseRangeAttack;
 };
 
