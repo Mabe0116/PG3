@@ -1,32 +1,19 @@
-#include <stdio.h>
+#include <iostream>
+#include <thread>
 
-template <typename Type>
-
-Type Min(Type a, Type b) {
-	if (a < b) {
-		return b;
-	}
-	return a;
-}
-
-template <>
-char Min <char>(char a, char b)
+void PrintString(const std::string& str)
 {
-	printf("”šˆÈŠO‚Í‘ã“ü‚Å‚«‚Ü‚¹‚ñ");
-	return 0;
+    std::cout << str << std::endl;
 }
 
+int main()
+{
+    std::thread th1(PrintString, "thread 1");
+    th1.join();
+    std::thread th2(PrintString, "thread 2");
+    th2.join();
+    std::thread th3(PrintString, "thread 3");
+    th3.join();
 
-int main() {
-
-	const int kWindowWigth = 1280;
-
-	printf("%d\n", Min<int>(114, 514));
-	printf("%f\n", Min<float>(11.4f, 51.4f));
-	printf("%lf\n", Min<double>(11.4f, 51.4f));
-	printf("%c\n", Min<char>('v', 'x'));
-
-	return 0;
+    return 0;
 }
-
-
