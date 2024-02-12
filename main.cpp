@@ -1,32 +1,17 @@
-#include <stdio.h>
-
-template <typename Type>
-
-Type Min(Type a, Type b) {
-	if (a < b) {
-		return b;
-	}
-	return a;
-}
-
-template <>
-char Min <char>(char a, char b)
-{
-	printf("”ŽšˆÈŠO‚Í‘ã“ü‚Å‚«‚Ü‚¹‚ñ");
-	return 0;
-}
-
+#include "Circle.h"
+#include "Rectangle.h"
 
 int main() {
+	IShape* circle = new Circle(2.0f);
+	circle->size();
+	circle->draw();
 
-	const int kWindowWigth = 1280;
+	IShape* rectangle = new Rectangle(2.0f, 4.0f);
+	rectangle->size();
+	rectangle->draw();
 
-	printf("%d\n", Min<int>(114, 514));
-	printf("%f\n", Min<float>(11.4f, 51.4f));
-	printf("%lf\n", Min<double>(11.4f, 51.4f));
-	printf("%c\n", Min<char>('v', 'x'));
+	delete circle;
+	delete rectangle;
 
 	return 0;
 }
-
-
