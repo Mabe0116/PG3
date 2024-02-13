@@ -1,32 +1,21 @@
-#include <stdio.h>
-
-template <typename Type>
-
-Type Min(Type a, Type b) {
-	if (a < b) {
-		return b;
-	}
-	return a;
-}
-
-template <>
-char Min <char>(char a, char b)
-{
-	printf("”šˆÈŠO‚Í‘ã“ü‚Å‚«‚Ü‚¹‚ñ");
-	return 0;
-}
-
+#include "beef.h"
+#include "chicken.h"
+#include "pork.h"
 
 int main() {
+	Meet* chicken = new Chicken();
 
-	const int kWindowWigth = 1280;
+	Meet* beef = new Beef();
 
-	printf("%d\n", Min<int>(114, 514));
-	printf("%f\n", Min<float>(11.4f, 51.4f));
-	printf("%lf\n", Min<double>(11.4f, 51.4f));
-	printf("%c\n", Min<char>('v', 'x'));
+	Meet* pork = new Pork();
+
+	chicken->eat();
+	beef->eat();
+	pork->eat();
+
+	delete chicken;
+	delete beef;
+	delete pork;
 
 	return 0;
 }
-
-
